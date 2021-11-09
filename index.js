@@ -1,9 +1,20 @@
 const getPicLinksBySelector = require('./apiLinksGetters/2chGetLinks')
 const downloadPicsFromArray = require('./downloaderPics')
 
+let treadLink = 'https://2ch.hk/h/res/157731.html';
+let folderName ='hent';
 
-getPicLinksBySelector('https://2ch.hk/gg/res/1115510.html#1115510')
-.then(linksArray =>{
-  
-    downloadPicsFromArray('dvach',linksArray)
-})
+
+
+download2chPics(treadLink,folderName)
+
+
+
+async  function download2chPics(link,folderName){
+    
+let linksArray = await getPicLinksBySelector(link)
+
+   await downloadPicsFromArray(folderName,linksArray)
+
+
+}

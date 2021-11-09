@@ -1,8 +1,8 @@
 const axios = require('axios')
-const cherio = require('cherio')
+const cheerio = require('cheerio')
 
-let selector = 'post__image-link>img'
-let link = 'https://2ch.hk/gg/res/1111819.html#1111819'
+let selector = '.post__image-link>img'
+let link = 'https://2ch.hk/h/res/157731.html'
 
 async function getPicLinksBySelector(link, selector){
 
