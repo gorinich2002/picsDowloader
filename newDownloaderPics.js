@@ -6,6 +6,7 @@ const request = require('request');
 
 const https = require('https'); // or 'https' for https:// URLs
 const { default: axios } = require('axios');
+const { resolve } = require('path');
 // async function httpsDownload(url,fileName,cookie){
 //     const file = fs.createWriteStream(fileName);
 //     const request = https.get(url,{
@@ -42,7 +43,7 @@ function promisify(f) {
 //   response.pipe(file);
 // });
 
-function axiosDownload(url,fileName,cookie =''){
+let axiosDownload = (url,fileName,cookie ='')=> new Promise(function(resolve,reject){
  
     const file =  fs.createWriteStream(fileName);
     const res =  request.get(url,{
@@ -50,13 +51,13 @@ function axiosDownload(url,fileName,cookie =''){
             Cookie:cookie
         }
     }) .pipe(file).on('finish', function(response) {
-        console.log('finish') // 200
+        resolve(200)
        
       }).on('error', function(err) {
         console.error(err)
       })
    
-}
+})
 async function httpsDownload(url,fileName,cookie =''){
     
     const file =  fs.createWriteStream(fileName);
