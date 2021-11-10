@@ -1,9 +1,8 @@
 const shortid = require('shortid');
 const path = require('path')
 const fs = require('fs');
-const {promisify} = require('util');
 const download = require('download');
-const {CookieJar} = require('tough-cookie');
+
 
 
 async function downloadPicsFromArray(dirName,arrayPicLinks, cookie){
@@ -18,15 +17,7 @@ async function downloadPicsFromArray(dirName,arrayPicLinks, cookie){
          
         let fileName  = path.join( __dirname,'dist',dirName, (shortid.generate()+'.'+link.split('.')[2]));
          try{
-             let cookieJar = new CookieJar();
-             const setCookie = promisify(cookieJar.setCookie.bind(cookieJar))
-            
-             cookie.split(';').forEach(async keyValue => {
-                let domen= link.split('/')[0]+link.split('/')[1]+link.split('/')[2]
-                await setCookie(keyValue, domen);
-            });
-
-        await fs.writeFile(fileName, await download(link,{cookieJar}),(err)=>{
+        await fs.writeFile(fileName, await download(link),(err)=>{
             if (err) console.log(err);
             i++
             console.log(fileName + ' has been writen')
