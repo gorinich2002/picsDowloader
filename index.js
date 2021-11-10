@@ -1,5 +1,5 @@
 const getPicLinksBySelector = require('./apiLinksGetters/2chGetLinks')
-const downloadPicsFromArray = require('./downloaderPics')
+const downloadPicsFromArray = require('./newDownloaderPics')
 
 let treadLink = 'https://2ch.hk/h/res/157731.json';
 let folderName ='hent';
@@ -10,11 +10,11 @@ download2chPics(treadLink,folderName,cookie2ch)
 
 
 
-async  function download2chPics(link,folderName){
+async  function download2chPics(link,folderName,cookie2ch){
     
 let linksArray = await getPicLinksBySelector(link,cookie2ch)
 
-   await downloadPicsFromArray(folderName,linksArray)
+   await downloadPicsFromArray(folderName,linksArray,cookie2ch)
 
 
 }

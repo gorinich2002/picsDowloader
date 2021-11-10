@@ -36,9 +36,5 @@ async function getPicLinksBySelector(link,cookie){
         }   
 
 }
-(async()=>{
-    let a = await getPicLinksBySelector('https://2ch.hk/h/res/157731.html');
-    console.log(a)
-})()
 
 module.exports = getPicLinksBySelector;
