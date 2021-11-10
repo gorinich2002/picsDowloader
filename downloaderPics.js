@@ -5,7 +5,7 @@ const download = require('download');
 
 
 
-async function downloadPicsFromArray(dirName,arrayPicLinks, cookie){
+async function downloadPicsFromArray(dirName,arrayPicLinks){
     console.log('files for recording counting: '+ arrayPicLinks.length)
     let i = 1;
    await fs.mkdir('dist/'+dirName, { recursive: true }, err => {
