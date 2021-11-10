@@ -4,7 +4,19 @@ const fs = require('fs');
 const download = require('download');
 
 const https = require('https'); // or 'https' for https:// URLs
+// async function httpsDownload(url,fileName,cookie){
+//     const file = fs.createWriteStream(fileName);
+//     const request = https.get(url,{
+//         headers:{
+//             Cookie:cookie
+//         }
+//     },
+//          function(response) {
+//         console.log(response)
+//     response.pipe(file);
+//     });
 
+// }
 
 async function httpsDownload(url,fileName,cookie){
     const file = fs.createWriteStream(fileName);
@@ -14,7 +26,7 @@ async function httpsDownload(url,fileName,cookie){
         }
     },
          function(response) {
-        console.log(response)
+       
     response.pipe(file);
     });
 
@@ -61,7 +73,7 @@ async function asyncForEach(arr, callback) {
   }
  
   (async ()=>{
-      await httpsDownload('https://2ch.hk/h/src/157731/15865918276711.mp4', 'asd.mp4',"07IFkGaPtry7mAxrnFzTs7kG=291342a1-e0fc-4d6b-ae69-1feae4c9c6ab; usercode_auth=086c2a7c29b42f8388c866b018501a16; SL_GWPT_Show_Hide_tmp=1; SL_wptGlobTipTmp=1; ageallow=1;")
+      await httpsDownload('https://2ch.hk/h/src/157731/15865918276711.mp4', 'oleg\\asd.mp4',"07IFkGaPtry7mAxrnFzTs7kG=291342a1-e0fc-4d6b-ae69-1feae4c9c6ab; usercode_auth=086c2a7c29b42f8388c866b018501a16; SL_GWPT_Show_Hide_tmp=1; SL_wptGlobTipTmp=1; ageallow=1;")
   })()
 
 module.exports = downloadPicsFromArray
