@@ -16,6 +16,7 @@
     "download": "^8.0.0",
     "gaxios": "^4.3.2",
     "request": "^2.88.2",
+    "request-promise-native": "^1.0.9",
     "shortid": "^2.2.16",
     "util": "^0.12.4"
   }

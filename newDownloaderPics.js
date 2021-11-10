@@ -2,7 +2,8 @@ const shortid = require('shortid');
 const path = require('path')
 const fs = require('fs');
 const download = require('download');
-const request = require('request')
+const request = require('request');
+
 const https = require('https'); // or 'https' for https:// URLs
 const { default: axios } = require('axios');
 // async function httpsDownload(url,fileName,cookie){
@@ -40,15 +41,20 @@ function promisify(f) {
 // const request = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
 //   response.pipe(file);
 // });
+let requestGet = promisify(request.get);
 async function axiosDownload(url,fileName,cookie =''){
  
     const file = await fs.createWriteStream(fileName);
-    const res = await request.get(url,{
+    const res = await requestGet(url,{
         headers:{
             Cookie:cookie
         }
     })
-    await res.pipe(file)
+    res.on('error', function(err) {
+        console.error(err)
+      })
+   await res.pipe(file)
+   file.close()
 }
 async function httpsDownload(url,fileName,cookie =''){
     
