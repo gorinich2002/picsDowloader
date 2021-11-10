@@ -41,20 +41,21 @@ function promisify(f) {
 // const request = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
 //   response.pipe(file);
 // });
-let requestGet = promisify(request.get);
-async function axiosDownload(url,fileName,cookie =''){
+
+function axiosDownload(url,fileName,cookie =''){
  
-    const file = await fs.createWriteStream(fileName);
-    const res = await requestGet(url,{
+    const file =  fs.createWriteStream(fileName);
+    const res =  request.get(url,{
         headers:{
             Cookie:cookie
         }
-    })
-    res.on('error', function(err) {
+    }) .pipe(file).on('finish', function(response) {
+        console.log('finish') // 200
+       
+      }).on('error', function(err) {
         console.error(err)
       })
-   await res.pipe(file)
-   file.close()
+   
 }
 async function httpsDownload(url,fileName,cookie =''){
     
