@@ -4,13 +4,20 @@ const cheerio = require('cheerio')
 let selector = '.post__image-link>img'
 let link = 'https://2ch.hk/h/res/157731.html'
 
-async function getPicLinksBySelector(link, selector){
+async function getPicLinksBySelector(link, selector,cookie){
 
    
    
         let resultArr = [];
         try{ 
-                await axios.get(link,{withCredentials: true})
+                await  await axios.request({
+                    url: APIlink,
+                    method: "get",
+                    headers:{
+                        Cookie: cookie
+
+                    } 
+               })
                 .then(res => res.data)
                 .then(res =>{
 
@@ -35,4 +42,4 @@ async function getPicLinksBySelector(link, selector){
         }   
 
 }
-getPicLinksBySelector(link,selector)
+module.exports = getPicLinksBySelector

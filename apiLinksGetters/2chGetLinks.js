@@ -3,15 +3,22 @@
 const axios = require('axios')
 const cherio = require('cherio')
 
-async function getPicLinksBySelector(link){
+async function getPicLinksBySelector(link,cookie){
 
    
    
         let resultArr = [];
         try{ 
                 let APIlink = link.split('#')[0]; APIlink = APIlink.split('.')[0]+'.' + APIlink.split('.')[1]+'.json'
-           
-                JSONthred = await axios.get(APIlink); JSONthred = JSONthred.data
+                console.log(APIlink)
+                let JSONthred = await axios.request({
+                    url: APIlink,
+                    method: "get",
+                    headers:{
+                        Cookie: cookie
+                    } 
+               });
+                JSONthred = JSONthred.data
                 
                 JSONthred.threads[0].posts.forEach(
                     (post,i)=>{
@@ -29,4 +36,9 @@ async function getPicLinksBySelector(link){
         }   
 
 }
-module.exports = getPicLinksBySelector
+(async()=>{
+    let a = await getPicLinksBySelector('https://2ch.hk/h/res/157731.html');
+    console.log(a)
+})()
+
+module.exports = getPicLinksBySelector;
