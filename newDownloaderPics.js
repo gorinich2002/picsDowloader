@@ -121,9 +121,9 @@ async function asyncForEach(arr, callback) {
  
  
 
-  (async()=>{
-    await axiosDownload("https://2ch.hk/h/src/157731/15865918279525.webm",'hent.webm','07IFkGaPtry7mAxrnFzTs7kG=291342a1-e0fc-4d6b-ae69-1feae4c9c6ab; usercode_auth=086c2a7c29b42f8388c866b018501a16; SL_GWPT_Show_Hide_tmp=1; SL_wptGlobTipTmp=1; ageallow=1;')
-  })()
+  // (async()=>{
+  //   await axiosDownload("https://2ch.hk/h/src/157731/15865918279525.webm",'hent.webm','07IFkGaPtry7mAxrnFzTs7kG=291342a1-e0fc-4d6b-ae69-1feae4c9c6ab; usercode_auth=086c2a7c29b42f8388c866b018501a16; SL_GWPT_Show_Hide_tmp=1; SL_wptGlobTipTmp=1; ageallow=1;')
+  // })()
 
 module.exports = downloadPicsFromArray
 
